@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - Potopopi CamSync</title>
+    <title>Terms of Service - Potopopi CamSync</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -90,6 +90,7 @@
 
         .nav-links a.active {
             color: #3B82F6;
+            font-weight: 600;
         }
 
         /* Main Content */
@@ -205,16 +206,9 @@
             font-weight: 700;
         }
 
-        .permissions-list li::before {
-            content: "🔒";
-            background-color: transparent;
-            font-size: 0.9rem;
-            top: 0;
-        }
-
         .highlight-box {
             background-color: rgba(255, 255, 255, 0.02);
-            border-left: 4px solid var(--primary);
+            border-left: 4px solid #EF4444; /* Warning/Danger Red-Orange for Terms waivers */
             padding: 20px;
             border-radius: 0 12px 12px 0;
             margin: 28px 0;
@@ -306,8 +300,8 @@
             <div class="nav-links">
                 <a href="/#features">Features</a>
                 <a href="/#about">About</a>
-                <a href="/policy" class="active">Privacy Policy</a>
-                <a href="/terms">Terms of Service</a>
+                <a href="/policy">Privacy Policy</a>
+                <a href="/terms" class="active">Terms of Service</a>
                 <a href="/#donation">Donate</a>
             </div>
         </div>
@@ -316,54 +310,48 @@
     <main>
         <div class="policy-card">
             <div class="title-section">
-                <h2>Privacy Policy</h2>
+                <h2>Terms of Service</h2>
                 <div class="badge">Last Updated: May 21, 2026</div>
             </div>
 
-            <p class="intro">Welcome to Potopopi CamSync. Your privacy is critically important to us. This Privacy Policy explains how we collect, use, and protect your data when you use our mobile application (the "App") and our website.</p>
+            <p class="intro">Please read these Terms of Service ("Terms") carefully before using the Potopopi CamSync mobile application (the "App"). By installing or using the App, you agree to be bound by these Terms.</p>
 
-            <h3>1. Privacy-First & Local-Only Design</h3>
-            <p>Potopopi CamSync is designed from the ground up as a direct, client-side synchronization utility. **We do not host any backend servers, track analytics, or collect user data.** All file synchronization workflows run purely on your local device, and your media files, authentication tokens, and server addresses are transmitted directly to your chosen endpoints without any intermediary server.</p>
+            <h3>1. Scope of License & Non-Commercial Use</h3>
+            <p>Potopopi CamSync is an open-source backup tool. You are granted a personal, non-exclusive, non-transferable, and revocable license to use the App. While the codebase is open-source under the Apache License 2.0 (or similar), these Terms govern the binary distributions delivered via official channels (e.g., Google Play Store).</p>
 
-            <h3>2. High-Privilege Permissions and Rationale</h3>
-            <p>To function as a direct digital camera backup client, Potopopi CamSync requires specific hardware and file access permissions on your device. We only request permissions necessary to execute the actions you explicitly trigger:</p>
-            <ul class="permissions-list">
-                <li><strong>All Files Access (<code>MANAGE_EXTERNAL_STORAGE</code> / <code>READ_EXTERNAL_STORAGE</code> / <code>WRITE_EXTERNAL_STORAGE</code>):</strong> Required to inspect, manage, and back up media from user-selected local folders, external storage volumes, and physical MicroSD cards. Since the App serves as a robust file backup and restore client, broad file access is necessary to copy large RAW files, catalog assets, and perform automated local file pruning safely.</li>
-                <li><strong>Media Access (<code>READ_MEDIA_IMAGES</code> / <code>READ_MEDIA_VIDEO</code>):</strong> Requested on Android 13+ to selectively read photos and videos from the system gallery for background backup routing.</li>
-                <li><strong>USB Host Communication (<code>android.hardware.usb.host</code> / <code>USB_PERMISSION</code>):</strong> Required to establish direct physical OTG/MTP links with digital cameras and external SD card readers.</li>
-                <li><strong>Network & Internet Access (<code>INTERNET</code> / <code>ACCESS_NETWORK_STATE</code>):</strong> Required to establish direct, encrypted HTTPS connections with your Google Drive, Nextcloud, and Immich endpoints.</li>
-                <li><strong>Foreground Sync Services (<code>FOREGROUND_SERVICE</code> / <code>FOREGROUND_SERVICE_DATA_SYNC</code>):</strong> Required to perform active file transfers in the background without the operating system interrupting or terminating the synchronization process.</li>
+            <h3>2. Provided "As-Is" (No Warranties)</h3>
+            <p>The App is provided on an <strong>"AS IS"</strong> and <strong>"AS AVAILABLE"</strong> basis without warranties of any kind, either express or implied, including but not limited to the implied warranties of merchantability, fitness for a particular purpose, or non-infringement.</p>
+            <ul>
+                <li>We do not warrant that the App will be uninterrupted, error-free, or completely free of data transmission glitches.</li>
+                <li>We make no guarantees regarding connection stability with local cameras, external USB hardware, or third-party cloud service providers.</li>
             </ul>
 
             <div class="highlight-box">
-                <p>Security & Encryption Note: All communication with Immich, Nextcloud, and Google Drive endpoints is encrypted via secure HTTPS protocols (TLS/SSL) by default.</p>
+                <p>Liability Warning: By using this software, you acknowledge that file synchronization, folder management, and local space pruning involve high-privilege device operations. Use entirely at your own risk.</p>
             </div>
 
-            <h3>3. Secure Credential Storage</h3>
-            <p>Your authentication credentials never leave your device, except to authenticate directly with your selected providers:</p>
+            <h3>3. Limitation of Liability & Data Loss Waiver</h3>
+            <p>Because Potopopi CamSync orchestrates file deletion, pruning, and low-level MTP file copying:</p>
             <ul>
-                <li><strong>Encrypted Storage:</strong> All Google OAuth2 tokens, Nextcloud WebDAV passwords, and Immich API keys are stored securely using Android's native <strong>EncryptedSharedPreferences</strong> framework. This secures them against unauthorized reads by other applications or physical extractions.</li>
-                <li><strong>No Third-Party Transmission:</strong> We never collect or transmit your credentials. Communication with your storage providers occurs strictly over secure HTTPS connections.</li>
+                <li><strong>No Liability for Data Loss:</strong> Under no circumstances shall the developer (<strong>purnadika</strong>) be liable for any direct, indirect, incidental, special, or consequential damages, including but not limited to loss of photos, corrupted videos, storage device failures, or accidental deletion of source files.</li>
+                <li><strong>User Responsibility:</strong> You are solely responsible for ensuring you have secondary backups of your media files and that you do not prune original files from your digital camera before confirming their successful synchronization and verification.</li>
             </ul>
 
-            <h3>4. Google Drive Data Scope Compliance</h3>
-            <p>Our use and transfer of information received from Google APIs to any other app will adhere to the Google API Services User Data Policy, including the Limited Use requirements.</p>
+            <h3>4. Third-Party Charges and Cloud Storage Costs</h3>
+            <p>Your sync workflows utilize network bandwidth and host cloud services:</p>
             <ul>
-                <li><strong>Requested Scope:</strong> <code>https://www.googleapis.com/auth/drive.file</code></li>
-                <li><strong>Limited Scope Access:</strong> The App only reads, writes, and manages files and folders that were explicitly created by Potopopi CamSync. We cannot see or modify other files in your Google Drive.</li>
+                <li><strong>Data Costs:</strong> You are fully responsible for any internet/cellular data costs incurred by background or foreground syncing. Make sure to configure cellular restrictions in the App's settings if you have limited cellular data.</li>
+                <li><strong>Cloud Provider Terms:</strong> You are responsible for maintaining your accounts on Google Drive, Nextcloud, or Immich, including payment of any storage costs, usage limits, or subscription fees associated with those accounts.</li>
             </ul>
 
-            <h3>5. Data Retention</h3>
-            <p>Potopopi CamSync maintains a local database on your device (a ledger) to remember which files have already been synchronized. This prevents duplicate uploads. This database never leaves your device and can be cleared at any time by uninstalling the app or clearing the app data.</p>
+            <h3>5. Changes to Terms</h3>
+            <p>We reserve the right to modify these Terms at any time. Your continued use of the App following any updates signifies your acceptance of the new Terms.</p>
 
-            <h3>6. Sharing of Information</h3>
-            <p>We do <strong>not</strong> sell, rent, trade, or otherwise share your personal information or media files with any third parties.</p>
+            <h3>6. Governing Law</h3>
+            <p>These Terms shall be governed by and construed in accordance with the laws of the developer's jurisdiction, without regard to its conflict of law provisions.</p>
 
-            <h3>7. Changes to This Privacy Policy</h3>
-            <p>We may update our Privacy Policy from time to time. We will notify you of any changes by updating the "Last Updated" date at the top of this policy.</p>
-
-            <h3>8. Contact Us</h3>
-            <p>If you have any questions or suggestions about our Privacy Policy, please contact us by emailing purnadika@proton.me.</p>
+            <h3>7. Contact</h3>
+            <p>For any questions regarding these Terms, please contact us by emailing purnadika@proton.me.</p>
         </div>
     </main>
 
@@ -371,8 +359,8 @@
         <div class="footer-links">
             <a href="/#features">Features</a>
             <a href="/#about">About</a>
-            <a href="/policy" class="active">Privacy Policy</a>
-            <a href="/terms">Terms of Service</a>
+            <a href="/policy">Privacy Policy</a>
+            <a href="/terms" class="active">Terms of Service</a>
             <a href="/#donation">Donate</a>
         </div>
         <p>&copy; 2026 purnadika. Built for privacy and automation. Hosted at <a href="https://potopopicamsync.purnadika.cloud">potopopicamsync.purnadika.cloud</a>.</p>
