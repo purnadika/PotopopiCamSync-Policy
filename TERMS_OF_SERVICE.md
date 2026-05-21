@@ -4,8 +4,8 @@
 
 Please read these Terms of Service ("Terms") carefully before using the Potopopi CamSync mobile application (the "App"). By installing or using the App, you agree to be bound by these Terms.
 
-### 1. Scope of License & Non-Commercial Use
-Potopopi CamSync is an open-source backup tool. You are granted a personal, non-exclusive, non-transferable, and revocable license to use the App. While the codebase is open-source under the Apache License 2.0 (or similar), these Terms govern the binary distributions delivered via official channels (e.g., Google Play Store).
+### 1. Scope of License & Proprietary Use
+Potopopi CamSync is a proprietary backup tool. You are granted a personal, non-exclusive, non-transferable, and revocable license to use the binary distribution of the App delivered via official channels (e.g., Google Play Store) under these Terms.
 
 ### 2. Provided "As-Is" (No Warranties)
 The App is provided on an **"AS IS"** and **"AS AVAILABLE"** basis without warranties of any kind, either express or implied, including but not limited to the implied warranties of merchantability, fitness for a particular purpose, or non-infringement. 

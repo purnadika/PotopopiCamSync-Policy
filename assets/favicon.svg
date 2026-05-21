@@ -1,0 +1,17 @@
+<svg width="108" height="108" viewBox="0 0 108 108" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="108" height="108" rx="24" fill="#0B0F19" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+    <circle cx="54" cy="54" r="40" fill="url(#outerGlow)" opacity="0.2"/>
+    <circle cx="54" cy="54" r="32" fill="url(#ringGrad)"/>
+    <circle cx="54" cy="54" r="12" fill="#0B0F19"/>
+    <circle cx="62" cy="46" r="2" fill="#FFFFFF" fill-opacity="0.8"/>
+    <defs>
+        <radialGradient id="outerGlow" cx="54" cy="54" r="40" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#3B82F6"/>
+            <stop offset="1" stop-color="#3B82F6" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="ringGrad" x1="22" y1="22" x2="86" y2="86" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#3B82F6"/>
+            <stop offset="1" stop-color="#22D3EE"/>
+        </linearGradient>
+    </defs>
+</svg>

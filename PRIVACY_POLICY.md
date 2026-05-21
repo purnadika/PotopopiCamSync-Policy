@@ -28,7 +28,7 @@ To function as a direct digital camera backup client, Potopopi CamSync requires 
 
 ### 3. Secure Credential Storage
 Your authentication credentials never leave your device, except to authenticate directly with your selected providers:
-*   **Encrypted Storage:** All Google OAuth2 tokens, Nextcloud WebDAV passwords, and Immich API keys are stored securely using Android's **EncryptedSharedPreferences** framework. This secures them against unauthorized reads by other applications or physical extractions.
+*   **Encrypted Storage:** All Google OAuth2 tokens, Nextcloud WebDAV passwords, and Immich API keys are stored securely using Android's native **EncryptedSharedPreferences** framework. This secures them against unauthorized reads by other applications or physical extractions.
 *   **No Third-Party Transmission:** We never collect or transmit your credentials. Communication with your storage providers occurs strictly over secure HTTPS connections.
 
 ### 4. Google Drive Data Scope Compliance
@@ -37,5 +37,5 @@ Our use and transfer of information received from Google APIs to any other app w
 *   **Limited Scope Access:** The App only reads, writes, and manages files and folders that were explicitly created by Potopopi CamSync. We cannot see or modify other files in your Google Drive.
 
 ### 5. Support and Inquiries
-For any questions regarding your privacy or the App's open-source source code, please contact:
+For any questions regarding your privacy, please contact:
 *   **Email:** purnadika@proton.me
