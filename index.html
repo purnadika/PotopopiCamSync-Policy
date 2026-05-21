@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Potopopi CamSync</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #F8FAFC;
+            --card-bg: #FFFFFF;
+            --primary: #3B82F6;
+            --primary-gradient: linear-gradient(135deg, #3B82F6 0%, #22D3EE 100%);
+            --text-main: #0F172A;
+            --text-muted: #475569;
+            --border-color: #E2E8F0;
+            --accent-bg: #EFF6FF;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 0 0 60px 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Premium Header Styling */
+        header {
+            background-color: #0F172A;
+            color: white;
+            padding: 24px 20px;
+            border-bottom: 4px solid #3B82F6;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+        }
+
+        .header-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo-text h1 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo-text p {
+            font-size: 0.75rem;
+            color: #94A3B8;
+            font-weight: 500;
+        }
+
+        /* Main Content Layout */
+        main {
+            max-width: 900px;
+            margin: 40px auto 0 auto;
+            padding: 0 20px;
+        }
+
+        .policy-card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.04);
+            padding: 40px;
+        }
+
+        @media (max-width: 640px) {
+            .policy-card {
+                padding: 24px;
+            }
+            main {
+                margin: 20px auto 0 auto;
+            }
+        }
+
+        .title-section {
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 24px;
+            margin-bottom: 32px;
+        }
+
+        .title-section h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 12px;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: var(--accent-bg);
+            color: var(--primary);
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid rgba(59, 130, 246, 0.15);
+        }
+
+        /* Markdown-like Text Styling */
+        p.intro {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-top: 36px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h3::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 20px;
+            background: var(--primary-gradient);
+            border-radius: 2px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: var(--text-muted);
+            font-size: 0.975rem;
+            font-weight: 400;
+        }
+
+        ul {
+            list-style: none;
+            margin-bottom: 24px;
+            padding-left: 4px;
+        }
+
+        li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 14px;
+            color: var(--text-muted);
+            font-size: 0.975rem;
+        }
+
+        li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 2px;
+            width: 18px;
+            height: 18px;
+            background-color: var(--accent-bg);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+
+        /* Accent Section for Permissions */
+        .permissions-list li::before {
+            content: "🔒";
+            background-color: transparent;
+            font-size: 0.9rem;
+            top: 0;
+        }
+
+        .highlight-box {
+            background-color: #F8FAFC;
+            border-left: 4px solid var(--primary);
+            padding: 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 28px 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        /* Footer styling */
+        footer {
+            max-width: 900px;
+            margin: 40px auto 0 auto;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        footer p {
+            font-size: 0.8rem;
+            color: #94A3B8;
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <!-- Precise official SVG logo matching app spec -->
+            <svg width="44" height="44" viewBox="0 0 108 108" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="108" height="108" rx="24" fill="#0F172A"/>
+                <circle cx="54" cy="54" r="40" fill="url(#outerGlow)" opacity="0.2"/>
+                <circle cx="54" cy="54" r="32" fill="url(#ringGrad)"/>
+                <circle cx="54" cy="54" r="12" fill="#0F172A"/>
+                <circle cx="62" cy="46" r="2" fill="#FFFFFF" fill-opacity="0.8"/>
+                <defs>
+                    <radialGradient id="outerGlow" cx="54" cy="54" r="40" gradientUnits="userSpaceOnUse">
+                        <stop offset="0" stop-color="#3B82F6"/>
+                        <stop offset="1" stop-color="#3B82F6" stop-opacity="0"/>
+                    </radialGradient>
+                    <linearGradient id="ringGrad" x1="22" y1="22" x2="86" y2="86" gradientUnits="userSpaceOnUse">
+                        <stop offset="0" stop-color="#3B82F6"/>
+                        <stop offset="1" stop-color="#22D3EE"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+            <div class="logo-text">
+                <h1>Potopopi CamSync</h1>
+                <p>Digital Camera Synchronization Client</p>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="policy-card">
+            <div class="title-section">
+                <h2>Privacy Policy</h2>
+                <div class="badge">Last Updated: May 21, 2026</div>
+            </div>
+
+            <p class="intro">Welcome to Potopopi CamSync. Your privacy is critically important to us. This Privacy Policy explains how we collect, use, and protect your data when you use our mobile application.</p>
+
+            <h3>1. Data Collection and Usage</h3>
+            <p>Potopopi CamSync is designed to act as a secure bridge between your digital cameras (via USB/MTP) and your chosen storage destinations (Local Storage, Immich, Nextcloud, and Google Drive).</p>
+            <ul>
+                <li><strong>Media Files (Photos & Videos):</strong> The app accesses your media files strictly for the purpose of synchronizing them to the destinations you explicitly configure. We do not inspect, analyze, or use your media for any other purpose.</li>
+                <li><strong>USB Device Data:</strong> The app reads camera device identifiers (such as USB serial numbers) to create unique profiles and track which files have been synced.</li>
+            </ul>
+
+            <h3>2. Data Transmission</h3>
+            <p>All data synchronization occurs directly between your device and the servers you configure.</p>
+            <ul>
+                <li><strong>No Middleman Servers:</strong> We do not operate any intermediary servers. Your data is sent directly to your configured Immich server, Nextcloud server, or Google Drive account.</li>
+                <li><strong>Third-Party Services:</strong> When using Google Drive, the app uses standard OAuth 2.0 to securely obtain authorization. We do not see or store your Google account password.</li>
+            </ul>
+
+            <h3>3. Permissions We Request</h3>
+            <p>To perform its core functions, Potopopi CamSync requests the following permissions on your device:</p>
+            <ul class="permissions-list">
+                <li><strong>Storage/Media Permissions:</strong> Required to save files from your camera to your phone, and to upload files from your phone to the cloud. We specifically request broad file access permissions to ensure seamless backup to local and external storage locations selected by the user.</li>
+                <li><strong>USB Access:</strong> Required to communicate with your connected digital camera.</li>
+                <li><strong>Network Access:</strong> Required to upload files and check for Wi-Fi/Cellular constraints.</li>
+                <li><strong>Foreground Services & Notifications:</strong> Required to keep the synchronization running in the background and keep you updated on the progress.</li>
+            </ul>
+
+            <div class="highlight-box">
+                <p>Security & Encryption Note: All communication with Immich, Nextcloud, and Google Drive endpoints is encrypted via secure HTTPS protocols (TLS/SSL) by default.</p>
+            </div>
+
+            <h3>4. Data Retention</h3>
+            <p>Potopopi CamSync maintains a local database on your device (a ledger) to remember which files have already been synchronized. This prevents duplicate uploads. This database never leaves your device and can be cleared at any time by uninstalling the app or clearing the app data.</p>
+
+            <h3>5. Sharing of Information</h3>
+            <p>We do <strong>not</strong> sell, rent, trade, or otherwise share your personal information or media files with any third parties.</p>
+
+            <h3>6. Changes to This Privacy Policy</h3>
+            <p>We may update our Privacy Policy from time to time. We will notify you of any changes by updating the "Last Updated" date at the top of this policy.</p>
+
+            <h3>7. Contact Us</h3>
+            <p>If you have any questions or suggestions about our Privacy Policy, please contact us by creating an issue in the official repository.</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 purnadika. Built for privacy and automation. Hosted with GitHub Pages.</p>
+    </footer>
+
+</body>
+</html>
