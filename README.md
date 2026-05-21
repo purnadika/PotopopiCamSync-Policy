@@ -31,4 +31,4 @@ We do **not** sell, rent, trade, or otherwise share your personal information or
 We may update our Privacy Policy from time to time. We will notify you of any changes by updating the "Last Updated" date at the top of this policy.
 
 ### 7. Contact Us
-If you have any questions or suggestions about our Privacy Policy, please contact us by creating an issue in this repository.
+If you have any questions or suggestions about our Privacy Policy, please contact us by emailing purnadika@proton.me.
