@@ -3,20 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - Potopopi CamSync</title>
+    <title>Potopopi CamSync - Automated Digital Camera Backups</title>
+    <meta name="description" content="A high-performance native Android application for direct camera synchronization to Immich, Nextcloud, Google Drive, and Local Storage via USB/MTP.">
+    <meta name="keywords" content="Potopopi CamSync, camera sync, android camera backup, Immich sync, Nextcloud camera upload, Google Drive photo backup, MTP sync">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://potopopicamsync.purnadika.cloud/">
+    <meta property="og:title" content="Potopopi CamSync - Digital Camera Backup Client">
+    <meta property="og:description" content="Directly sync physical digital cameras (USB/MTP) and SD cards to Google Drive, Nextcloud, Immich, and Local Storage simultaneously.">
+    <meta property="og:image" content="https://potopopicamsync.purnadika.cloud/assets/play_store_logo_official.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --bg-color: #F8FAFC;
-            --card-bg: #FFFFFF;
+            --bg-color: #0B0F19;
+            --card-bg: rgba(17, 24, 39, 0.6);
             --primary: #3B82F6;
+            --secondary: #22D3EE;
             --primary-gradient: linear-gradient(135deg, #3B82F6 0%, #22D3EE 100%);
-            --text-main: #0F172A;
-            --text-muted: #475569;
-            --border-color: #E2E8F0;
-            --accent-bg: #EFF6FF;
+            --text-main: #F3F4F6;
+            --text-muted: #9CA3AF;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --glow-color: rgba(59, 130, 246, 0.35);
         }
 
         * {
@@ -25,219 +37,723 @@
             padding: 0;
         }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
-            padding: 0 0 60px 0;
-            -webkit-font-smoothing: antialiased;
+        html {
+            scroll-behavior: smooth;
         }
 
-        /* Premium Header Styling */
-        header {
-            background-color: #0F172A;
-            color: white;
-            padding: 24px 20px;
-            border-bottom: 4px solid #3B82F6;
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at top right, rgba(59, 130, 246, 0.1), transparent 600px),
+                radial-gradient(circle at bottom left, rgba(34, 211, 238, 0.06), transparent 500px);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .nav-logo {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* Nav Bar */
+        nav {
+            background-color: rgba(11, 15, 25, 0.7);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+            transition: all 0.3s ease;
         }
 
-        .header-container {
-            max-width: 900px;
+        .nav-container {
+            max-width: 1200px;
             margin: 0 auto;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 16px;
+            padding: 16px 24px;
         }
 
-        .logo-text h1 {
-            font-size: 1.25rem;
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .logo h1 {
+            font-size: 1.35rem;
             font-weight: 800;
-            letter-spacing: 0.5px;
+            letter-spacing: -0.5px;
             background: var(--primary-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .logo-text p {
-            font-size: 0.75rem;
-            color: #94A3B8;
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #9CA3AF;
+            text-decoration: none;
             font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.25s ease;
         }
 
-        /* Main Content Layout */
-        main {
-            max-width: 900px;
-            margin: 40px auto 0 auto;
-            padding: 0 20px;
+        .nav-links a:hover {
+            color: white;
         }
 
-        .policy-card {
-            background-color: var(--card-bg);
-            border-radius: 16px;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.04);
-            padding: 40px;
+        .btn-nav-donate {
+            background: var(--primary-gradient);
+            color: white !important;
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25);
+            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+        }
+
+        .btn-nav-donate:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 24px 100px 24px;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            align-items: center;
+            gap: 60px;
+        }
+
+        @media (max-width: 968px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 40px 24px 80px 24px;
+                text-align: center;
+                gap: 40px;
+            }
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            color: #3B82F6;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.15;
+            letter-spacing: -1.5px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .hero-title span {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         @media (max-width: 640px) {
-            .policy-card {
-                padding: 24px;
-            }
-            main {
-                margin: 20px auto 0 auto;
+            .hero-title {
+                font-size: 2.5rem;
             }
         }
 
-        .title-section {
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 24px;
-            margin-bottom: 32px;
-        }
-
-        .title-section h2 {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--text-main);
-            margin-bottom: 12px;
-        }
-
-        .badge {
-            display: inline-block;
-            background-color: var(--accent-bg);
-            color: var(--primary);
-            font-size: 0.8rem;
-            font-weight: 600;
-            padding: 6px 14px;
-            border-radius: 20px;
-            border: 1px solid rgba(59, 130, 246, 0.15);
-        }
-
-        /* Markdown-like Text Styling */
-        p.intro {
-            font-size: 1.1rem;
+        .hero-desc {
+            font-size: 1.15rem;
             color: var(--text-muted);
-            margin-bottom: 30px;
+            margin-bottom: 36px;
+            max-width: 580px;
         }
 
-        h3 {
-            font-size: 1.35rem;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-top: 36px;
-            margin-bottom: 16px;
+        @media (max-width: 968px) {
+            .hero-desc {
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        .hero-actions {
             display: flex;
+            gap: 16px;
+        }
+
+        @media (max-width: 968px) {
+            .hero-actions {
+                justify-content: center;
+            }
+        }
+
+        .btn-primary {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 30px rgba(59, 130, 246, 0.45);
+        }
+
+        .btn-secondary {
+            background-color: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-color);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+            display: inline-flex;
             align-items: center;
             gap: 10px;
         }
 
-        h3::before {
-            content: '';
-            display: inline-block;
-            width: 4px;
-            height: 20px;
-            background: var(--primary-gradient);
-            border-radius: 2px;
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
         }
 
-        p {
-            margin-bottom: 20px;
-            color: var(--text-muted);
-            font-size: 0.975rem;
-            font-weight: 400;
-        }
-
-        ul {
-            list-style: none;
-            margin-bottom: 24px;
-            padding-left: 4px;
-        }
-
-        li {
+        /* Glass Mockup Frame */
+        .mockup-wrapper {
             position: relative;
-            padding-left: 28px;
-            margin-bottom: 14px;
-            color: var(--text-muted);
-            font-size: 0.975rem;
+            perspective: 1000px;
         }
 
-        li::before {
-            content: "✓";
+        .mockup-frame {
+            background-color: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 12px;
+            box-shadow: 
+                0 30px 60px -15px rgba(0, 0, 0, 0.5),
+                0 0 50px rgba(59, 130, 246, 0.15);
+            transition: transform 0.5s ease;
+        }
+
+        .mockup-frame:hover {
+            transform: rotateY(-3deg) rotateX(2deg) translateY(-5px);
+        }
+
+        .mockup-img {
+            width: 100%;
+            border-radius: 16px;
+            display: block;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Features Section */
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px auto;
+            padding: 0 24px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        .features-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px 80px 24px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            background-color: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 36px;
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
             position: absolute;
+            top: 0;
             left: 0;
-            top: 2px;
-            width: 18px;
-            height: 18px;
-            background-color: var(--accent-bg);
-            color: var(--primary);
-            border-radius: 50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.1), transparent 60%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(59, 130, 246, 0.3);
+            box-shadow: 0 16px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background-color: rgba(59, 130, 246, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.7rem;
+            color: #3B82F6;
+            margin-bottom: 24px;
+            border: 1px solid rgba(59, 130, 246, 0.15);
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
             font-weight: 700;
+            color: white;
+            margin-bottom: 12px;
         }
 
-        /* Accent Section for Permissions */
-        .permissions-list li::before {
-            content: "🔒";
-            background-color: transparent;
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Tabbed Showcase Section */
+        .showcase {
+            background-color: rgba(17, 24, 39, 0.3);
+            border-y: 1px solid var(--border-color);
+            padding: 80px 24px;
+        }
+
+        .showcase-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .showcase-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .tab-btn {
+            background-color: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.25s ease;
+        }
+
+        .tab-btn:hover {
+            color: white;
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .tab-btn.active {
+            background-color: #3B82F6;
+            color: white;
+            border-color: #3B82F6;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        .showcase-content {
+            display: none;
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        .showcase-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* About Section */
+        .about-section {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        @media (max-width: 968px) {
+            .about-section {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        .about-img-wrapper {
+            position: relative;
+        }
+
+        .about-img-card {
+            background-color: rgba(15, 23, 42, 0.5);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .tech-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .tech-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
             font-size: 0.9rem;
-            top: 0;
+            color: var(--text-muted);
         }
 
-        .highlight-box {
-            background-color: #F8FAFC;
-            border-left: 4px solid var(--primary);
-            padding: 20px;
-            border-radius: 0 12px 12px 0;
-            margin: 28px 0;
+        .tech-item::before {
+            content: '⚙️';
+            font-size: 0.8rem;
         }
 
-        .highlight-box p {
-            margin-bottom: 0;
-            font-weight: 500;
-            color: var(--text-main);
+        /* Donation Section */
+        .donation {
+            max-width: 900px;
+            margin: 100px auto 60px auto;
+            padding: 0 24px;
+        }
+
+        .donation-box {
+            background: linear-gradient(180deg, rgba(59, 130, 246, 0.08) 0%, transparent 100%);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 24px;
+            padding: 50px 40px;
+            text-align: center;
+            box-shadow: 0 20px 45px rgba(59, 130, 246, 0.03);
+            position: relative;
+        }
+
+        .donation-box::after {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 20%;
+            right: 20%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #22D3EE, transparent);
+        }
+
+        .donation h2 {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 16px;
+        }
+
+        .donation p {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 32px auto;
+            font-size: 1.05rem;
+        }
+
+        .donation-heart {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
 
         /* Footer styling */
         footer {
-            max-width: 900px;
-            margin: 40px auto 0 auto;
+            max-width: 1200px;
+            margin: 80px auto 0 auto;
+            padding: 40px 24px;
+            border-top: 1px solid var(--border-color);
             text-align: center;
-            padding: 0 20px;
         }
 
-        footer p {
-            font-size: 0.8rem;
-            color: #94A3B8;
-        }
-
-        footer a {
-            color: var(--primary);
+        .footer-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
             text-decoration: none;
-            font-weight: 600;
+            color: white;
+            margin-bottom: 20px;
         }
 
-        footer a:hover {
-            text-decoration: underline;
+        .footer-logo h2 {
+            font-size: 1.15rem;
+            font-weight: 800;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-text {
+            color: #6B7280;
+            font-size: 0.85rem;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="header-container">
-            <!-- Precise official SVG logo matching app spec -->
-            <svg width="44" height="44" viewBox="0 0 108 108" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="108" height="108" rx="24" fill="#0F172A"/>
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <svg width="34" height="34" viewBox="0 0 108 108" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="108" height="108" rx="24" fill="#0B0F19" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+                    <circle cx="54" cy="54" r="40" fill="url(#outerGlow)" opacity="0.2"/>
+                    <circle cx="54" cy="54" r="32" fill="url(#ringGrad)"/>
+                    <circle cx="54" cy="54" r="12" fill="#0B0F19"/>
+                    <circle cx="62" cy="46" r="2" fill="#FFFFFF" fill-opacity="0.8"/>
+                    <defs>
+                        <radialGradient id="outerGlow" cx="54" cy="54" r="40" gradientUnits="userSpaceOnUse">
+                            <stop offset="0" stop-color="#3B82F6"/>
+                            <stop offset="1" stop-color="#3B82F6" stop-opacity="0"/>
+                        </radialGradient>
+                        <linearGradient id="ringGrad" x1="22" y1="22" x2="86" y2="86" gradientUnits="userSpaceOnUse">
+                            <stop offset="0" stop-color="#3B82F6"/>
+                            <stop offset="1" stop-color="#22D3EE"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <h1>Potopopi CamSync</h1>
+            </a>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#about">About</a>
+                <a href="/policy">Privacy Policy</a>
+                <a href="#donation" class="btn-nav-donate">Donate</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div>
+            <div class="hero-tag">
+                <span>📱</span> Version 1.2.0 is Live on Android
+            </div>
+            <h1 class="hero-title">Direct Camera Backups <span>To Your Personal Cloud</span></h1>
+            <p class="hero-desc">Bridges physical digital cameras (via USB/MTP) and SD cards directly to Google Drive, Nextcloud, and Immich simultaneously, without leaving local footprint trace.</p>
+            <div class="hero-actions">
+                <a href="https://github.com/purnadika/potopopi_CamSync" target="_blank" class="btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                    GitHub Project
+                </a>
+                <a href="#features" class="btn-secondary">Explore Features</a>
+            </div>
+        </div>
+        <div class="mockup-wrapper">
+            <div class="mockup-frame">
+                <img src="/assets/dashboard_real.png" alt="Potopopi CamSync App Real Dashboard Preview" class="mockup-img">
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features">
+        <div class="section-header">
+            <h2>Fully Featured Backup Suite</h2>
+            <p>Designed natively in Kotlin to provide professional-grade camera media synchronization and direct file orchestration.</p>
+        </div>
+
+        <div class="features-grid">
+            <!-- Feature 1 -->
+            <div class="feature-card">
+                <div class="feature-icon">🔌</div>
+                <h3>USB / MTP Hardware Sync</h3>
+                <p>Plug your camera (Canon, Nikon, Sony, GoPro) directly into your Android device via OTG. Stream media seamlessly using Android's native MTP stack.</p>
+            </div>
+            <!-- Feature 2 -->
+            <div class="feature-card">
+                <div class="feature-icon">☁️</div>
+                <h3>Concurrent Multi-Cloud</h3>
+                <p>Transmit files in parallel directly to Google Drive, Nextcloud, and Immich simultaneously, configured and routed cleanly by a unified dispatch ledger.</p>
+            </div>
+            <!-- Feature 3 -->
+            <div class="feature-card">
+                <div class="feature-icon">📂</div>
+                <h3>Local Storage Fallback</h3>
+                <p>No physical camera on hand? Seamlessly scan and upload your pre-configured local storage folder via the secure Android Storage Access Framework (SAF).</p>
+            </div>
+            <!-- Feature 4 -->
+            <div class="feature-card">
+                <div class="feature-icon">⚖️</div>
+                <h3>Dynamic Routing Matrix</h3>
+                <p>Room-backed matrix lets you route common media (JPEGs/PNGs) and RAW/support files (.xmp, .lrv, .thm) to separate custom cloud paths.</p>
+            </div>
+            <!-- Feature 5 -->
+            <div class="feature-card">
+                <div class="feature-icon">📶</div>
+                <h3>Cellular Data Gates</h3>
+                <p>Have strict billing constraints? Tweak per-provider metered cellular gates to independently authorize background transfers exclusively on Wi-Fi.</p>
+            </div>
+            <!-- Feature 6 -->
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3>Zero-Footprint Mode</h3>
+                <p>Upload files securely to cloud storage without leaving heavy local cache records, automatically handling memory deletion post-sync.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Showcase / Visual Tab Slider -->
+    <section class="showcase">
+        <div class="showcase-container">
+            <div class="section-header" style="margin-bottom: 30px;">
+                <h2>Interactive Showcase</h2>
+                <p>A peek inside our native Android Jetpack Compose user experience.</p>
+            </div>
+            
+            <div class="showcase-tabs">
+                <button class="tab-btn active" onclick="switchTab(event, 'tab-active')">Active Sync Dashboard</button>
+                <button class="tab-btn" onclick="switchTab(event, 'tab-setup')">New Device Detection</button>
+                <button class="tab-btn" onclick="switchTab(event, 'tab-empty')">Clean Dashboard</button>
+            </div>
+
+            <!-- Tab 1 -->
+            <div id="tab-active" class="showcase-content active">
+                <div class="mockup-frame" style="max-width: 800px; margin: 0 auto;">
+                    <img src="/assets/dashboard_real.png" alt="Active Sync Dashboard showing transfer progress and logs" class="mockup-img">
+                </div>
+            </div>
+            <!-- Tab 2 -->
+            <div id="tab-setup" class="showcase-content">
+                <div class="mockup-frame" style="max-width: 800px; margin: 0 auto;">
+                    <img src="/assets/new_camera_dialog.png" alt="Interactive Setup Dialog identifying connected digital camera" class="mockup-img">
+                </div>
+            </div>
+            <!-- Tab 3 -->
+            <div id="tab-empty" class="showcase-content">
+                <div class="mockup-frame" style="max-width: 800px; margin: 0 auto;">
+                    <img src="/assets/dashboard_empty.png" alt="Clean empty state sync dashboard interface" class="mockup-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="about-img-wrapper">
+            <div class="about-img-card">
+                <h3 style="margin-top:0; margin-bottom:12px;">App Specifications</h3>
+                <p>Potopopi CamSync Android is engineered directly for high-performance and premium visual stability. Here is the modern tech stack supporting your backup runs:</p>
+                <div class="tech-list">
+                    <div class="tech-item">Jetpack Compose UI</div>
+                    <div class="tech-item">Kotlin 2.1 MVVM</div>
+                    <div class="tech-item">Android MTP API</div>
+                    <div class="tech-item">WorkManager Scheduler</div>
+                    <div class="tech-item">Room Database</div>
+                    <div class="tech-item">Retrofit 2 & OkHttp</div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h2 style="font-size:2.25rem; font-weight:800; margin-bottom:20px; color:white;">About The Developer</h2>
+            <p style="margin-bottom:20px; color:var(--text-muted);">Hello, I'm **purnadika**! I built Potopopi CamSync out of a passion for photography and private, self-hosted technology. Dissatisfied with the lack of reliable direct camera-to-cloud Android clients, I developed a native, privacy-first companion client that runs perfectly on modern mobile phones.</p>
+            <p style="margin-bottom:20px; color:var(--text-muted);">The project is free, open source, and built entirely around complete user privacy. We will never sell, store, or intercept your high-res files or account credentials.</p>
+            <a href="mailto:purnadika@proton.me" class="btn-secondary" style="margin-top: 10px;">Contact Me</a>
+        </div>
+    </section>
+
+    <!-- Donation Section -->
+    <section id="donation" class="donation">
+        <div class="donation-box">
+            <div class="donation-heart">💙</div>
+            <h2>Support Potopopi CamSync</h2>
+            <p>Developing Potopopi CamSync takes significant time, effort, and continuous integration with real camera hardware. If this app helps secure your photography workflow and saves you local storage space, consider buying me a coffee or supporting the project!</p>
+            <a href="https://github.com/sponsors/purnadika" target="_blank" class="btn-primary" style="font-size: 1.1rem; padding: 16px 36px;">
+                Support Development
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <a href="#" class="footer-logo">
+            <svg width="24" height="24" viewBox="0 0 108 108" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="108" height="108" rx="24" fill="#0B0F19" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
                 <circle cx="54" cy="54" r="40" fill="url(#outerGlow)" opacity="0.2"/>
                 <circle cx="54" cy="54" r="32" fill="url(#ringGrad)"/>
-                <circle cx="54" cy="54" r="12" fill="#0F172A"/>
+                <circle cx="54" cy="54" r="12" fill="#0B0F19"/>
                 <circle cx="62" cy="46" r="2" fill="#FFFFFF" fill-opacity="0.8"/>
                 <defs>
                     <radialGradient id="outerGlow" cx="54" cy="54" r="40" gradientUnits="userSpaceOnUse">
@@ -250,66 +766,35 @@
                     </linearGradient>
                 </defs>
             </svg>
-            <div class="logo-text">
-                <h1>Potopopi CamSync</h1>
-                <p>Digital Camera Synchronization Client</p>
-            </div>
+            <h2>Potopopi CamSync</h2>
+        </a>
+        <div class="footer-links">
+            <a href="#features">Features</a>
+            <a href="#about">About</a>
+            <a href="/policy">Privacy Policy</a>
+            <a href="#donation">Donate</a>
         </div>
-    </header>
-
-    <main>
-        <div class="policy-card">
-            <div class="title-section">
-                <h2>Privacy Policy</h2>
-                <div class="badge">Last Updated: May 21, 2026</div>
-            </div>
-
-            <p class="intro">Welcome to Potopopi CamSync. Your privacy is critically important to us. This Privacy Policy explains how we collect, use, and protect your data when you use our mobile application.</p>
-
-            <h3>1. Data Collection and Usage</h3>
-            <p>Potopopi CamSync is designed to act as a secure bridge between your digital cameras (via USB/MTP) and your chosen storage destinations (Local Storage, Immich, Nextcloud, and Google Drive).</p>
-            <ul>
-                <li><strong>Media Files (Photos & Videos):</strong> The app accesses your media files strictly for the purpose of synchronizing them to the destinations you explicitly configure. We do not inspect, analyze, or use your media for any other purpose.</li>
-                <li><strong>USB Device Data:</strong> The app reads camera device identifiers (such as USB serial numbers) to create unique profiles and track which files have been synced.</li>
-            </ul>
-
-            <h3>2. Data Transmission</h3>
-            <p>All data synchronization occurs directly between your device and the servers you configure.</p>
-            <ul>
-                <li><strong>No Middleman Servers:</strong> We do not operate any intermediary servers. Your data is sent directly to your configured Immich server, Nextcloud server, or Google Drive account.</li>
-                <li><strong>Third-Party Services:</strong> When using Google Drive, the app uses standard OAuth 2.0 to securely obtain authorization. We do not see or store your Google account password.</li>
-            </ul>
-
-            <h3>3. Permissions We Request</h3>
-            <p>To perform its core functions, Potopopi CamSync requests the following permissions on your device:</p>
-            <ul class="permissions-list">
-                <li><strong>Storage/Media Permissions:</strong> Required to save files from your camera to your phone, and to upload files from your phone to the cloud. We specifically request broad file access permissions to ensure seamless backup to local and external storage locations selected by the user.</li>
-                <li><strong>USB Access:</strong> Required to communicate with your connected digital camera.</li>
-                <li><strong>Network Access:</strong> Required to upload files and check for Wi-Fi/Cellular constraints.</li>
-                <li><strong>Foreground Services & Notifications:</strong> Required to keep the synchronization running in the background and keep you updated on the progress.</li>
-            </ul>
-
-            <div class="highlight-box">
-                <p>Security & Encryption Note: All communication with Immich, Nextcloud, and Google Drive endpoints is encrypted via secure HTTPS protocols (TLS/SSL) by default.</p>
-            </div>
-
-            <h3>4. Data Retention</h3>
-            <p>Potopopi CamSync maintains a local database on your device (a ledger) to remember which files have already been synchronized. This prevents duplicate uploads. This database never leaves your device and can be cleared at any time by uninstalling the app or clearing the app data.</p>
-
-            <h3>5. Sharing of Information</h3>
-            <p>We do <strong>not</strong> sell, rent, trade, or otherwise share your personal information or media files with any third parties.</p>
-
-            <h3>6. Changes to This Privacy Policy</h3>
-            <p>We may update our Privacy Policy from time to time. We will notify you of any changes by updating the "Last Updated" date at the top of this policy.</p>
-
-            <h3>7. Contact Us</h3>
-            <p>If you have any questions or suggestions about our Privacy Policy, please contact us by creating an issue in the official repository.</p>
-        </div>
-    </main>
-
-    <footer>
-        <p>&copy; 2026 purnadika. Built for privacy and automation. Hosted with GitHub Pages.</p>
+        <p class="footer-text">&copy; 2026 purnadika. All rights reserved. Self-host and backup securely.</p>
     </footer>
 
+    <script>
+        function switchTab(evt, tabId) {
+            // Hide all showcase contents
+            var contents = document.getElementsByClassName("showcase-content");
+            for (var i = 0; i < contents.length; i++) {
+                contents[i].classList.remove("active");
+            }
+
+            // Remove active class from all buttons
+            var buttons = document.getElementsByClassName("tab-btn");
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].classList.remove("active");
+            }
+
+            // Show active tab, add active class to button
+            document.getElementById(tabId).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
 </body>
 </html>
