@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Manual & Configuration Guide - Potopopi CamSync</title>
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0B0F19;
+            --card-bg: rgba(17, 24, 39, 0.6);
+            --primary: #3B82F6;
+            --primary-gradient: linear-gradient(135deg, #3B82F6 0%, #22D3EE 100%);
+            --text-main: #F3F4F6;
+            --text-muted: #9CA3AF;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --accent-bg: rgba(59, 130, 246, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            background-image: radial-gradient(circle at top right, rgba(59, 130, 246, 0.08), transparent 400px);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 0 0 60px 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Nav Bar */
+        nav {
+            background-color: rgba(11, 15, 25, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .logo h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #9CA3AF;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.25s ease;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .nav-links a.active {
+            color: #3B82F6;
+            font-weight: 600;
+        }
+
+        /* Main Content Layout */
+        .container {
+            max-width: 1100px;
+            margin: 40px auto 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 40px;
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                grid-template-columns: 1fr;
+                margin-top: 20px;
+                gap: 24px;
+            }
+            .sidebar {
+                display: none; /* Hide sidebar list on mobile for cleaner linear reading */
+            }
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+            backdrop-filter: blur(12px);
+        }
+
+        .sidebar h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            color: white;
+        }
+
+        .sidebar-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            list-style: none;
+        }
+
+        .sidebar-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: color 0.2s ease, padding-left 0.2s ease;
+            display: block;
+        }
+
+        .sidebar-links a:hover {
+            color: #3B82F6;
+            padding-left: 4px;
+        }
+
+        /* Main Card */
+        .manual-card {
+            background-color: var(--card-bg);
+            backdrop-filter: blur(16px);
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            padding: 50px;
+        }
+
+        @media (max-width: 640px) {
+            .manual-card {
+                padding: 24px;
+            }
+        }
+
+        .title-section {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 24px;
+            margin-bottom: 32px;
+        }
+
+        .title-section h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: var(--accent-bg);
+            color: #3B82F6;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        p.intro {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: white;
+            margin-top: 48px;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            padding-bottom: 10px;
+            scroll-margin-top: 100px;
+        }
+
+        h3::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 22px;
+            background: var(--primary-gradient);
+            border-radius: 2px;
+        }
+
+        h4.sub-heading {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: white;
+            margin-top: 24px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 18px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        ul {
+            list-style: none;
+            margin-bottom: 24px;
+            padding-left: 4px;
+        }
+
+        li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 14px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 2px;
+            width: 18px;
+            height: 18px;
+            background-color: var(--accent-bg);
+            color: #22D3EE;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+
+        /* Highlight & Alert boxes */
+        .highlight-box {
+            background-color: rgba(255, 255, 255, 0.02);
+            border-left: 4px solid var(--primary);
+            padding: 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 24px 0;
+            border-top: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .highlight-box.warning {
+            border-left-color: #F59E0B; /* Orange */
+            background-color: rgba(245, 158, 11, 0.02);
+        }
+
+        .highlight-box.tip {
+            border-left-color: #10B981; /* Emerald Green */
+            background-color: rgba(16, 185, 129, 0.02);
+        }
+
+        .highlight-box h5 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: rgba(255,255,255,0.06);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #E2E8F0;
+            font-size: 0.85rem;
+        }
+
+        /* Footer */
+        footer {
+            max-width: 900px;
+            margin: 50px auto 0 auto;
+            text-align: center;
+            padding: 0 20px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 24px;
+        }
+
+        footer p {
+            font-size: 0.8rem;
+            color: #6B7280;
+        }
+
+        footer a {
+            color: #3B82F6;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+            font-weight: 500;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <svg width="34" height="34" viewBox="0 0 108 108" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="108" height="108" rx="24" fill="#0B0F19" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+                    <circle cx="54" cy="54" r="40" fill="url(#outerGlow)" opacity="0.2"/>
+                    <circle cx="54" cy="54" r="32" fill="url(#ringGrad)"/>
+                    <circle cx="54" cy="54" r="12" fill="#0B0F19"/>
+                    <circle cx="62" cy="46" r="2" fill="#FFFFFF" fill-opacity="0.8"/>
+                    <defs>
+                        <radialGradient id="outerGlow" cx="54" cy="54" r="40" gradientUnits="userSpaceOnUse">
+                            <stop offset="0" stop-color="#3B82F6"/>
+                            <stop offset="1" stop-color="#3B82F6" stop-opacity="0"/>
+                        </radialGradient>
+                        <linearGradient id="ringGrad" x1="22" y1="22" x2="86" y2="86" gradientUnits="userSpaceOnUse">
+                            <stop offset="0" stop-color="#3B82F6"/>
+                            <stop offset="1" stop-color="#22D3EE"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <h1>Potopopi CamSync</h1>
+            </a>
+            <div class="nav-links">
+                <a href="/#features">Features</a>
+                <a href="/#about">About</a>
+                <a href="/manual" class="active">User Manual</a>
+                <a href="/policy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
+                <a href="/#donation">Donate</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Sidebar Table of Contents -->
+        <aside class="sidebar">
+            <h4>Quick Navigation</h4>
+            <ul class="sidebar-links">
+                <li><a href="#hardware">1. Hardware & OTG Specs</a></li>
+                <li><a href="#camera-connect">2. Direct Camera Link</a></li>
+                <li><a href="#card-reader">3. SD Card Reader Setup</a></li>
+                <li><a href="#destinations">4. Config Destinations</a></li>
+                <li><a href="#routing">5. Routing & Cellular</a></li>
+                <li><a href="#troubleshooting">6. Background & Settings</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Card containing Manual -->
+        <main>
+            <div class="manual-card">
+                <div class="title-section">
+                    <h2>User Manual & Setup Guide</h2>
+                    <div class="badge">Official Documentation</div>
+                </div>
+
+                <p class="intro">Welcome to the official Potopopi CamSync configuration guide. This manual provides detailed, step-by-step instructions to connect your digital camera or external SD card reader to your Android device, configure synchronization routes, and maintain seamless background backups.</p>
+
+                <!-- Section 1 -->
+                <h3 id="hardware">1. Hardware & USB On-The-Go (OTG) Requirements</h3>
+                <p>For Potopopi CamSync to interface with cameras or external storage directly, your Android device must act as a **USB Host**. This protocol is called **USB On-The-Go (OTG)**.</p>
+                
+                <h4 class="sub-heading">Hardware Checklist:</h4>
+                <ul>
+                    <li><strong>OTG-Capable Android Device:</strong> Most modern Android phones and tablets with USB Type-C support this natively.</li>
+                    <li><strong>Physical Link:</strong> A high-quality USB-C to USB-C cable (if your camera uses a Type-C port) or a dedicated USB-C OTG card reader.</li>
+                    <li><strong>OTG Adapter (if needed):</strong> If you use a camera or reader with a traditional USB-A plug, you must use a certified USB-C to USB-A OTG adapter.</li>
+                </ul>
+
+                <div class="highlight-box warning">
+                    <h5>⚠️ OnePlus, Oppo, Vivo, & Realme Users:</h5>
+                    <p>By default, these manufacturers disable USB OTG connections in their operating systems to save power. Before connecting your hardware, you must go to <strong>Settings > Additional Settings (or System) > toggle ON "OTG Connection"</strong>. Note that the OS automatically disables this option if it remains idle for 10 minutes.</p>
+                </div>
+
+                <!-- Section 2 -->
+                <h3 id="camera-connect">2. Direct Camera Connection (USB/MTP)</h3>
+                <p>Potopopi CamSync uses Android's native MTP (Media Transfer Protocol) stack to stream photos and videos directly from digital cameras to your local storage cache.</p>
+
+                <h4 class="sub-heading">Step-by-Step Setup:</h4>
+                <ol style="margin-left: 20px; margin-bottom: 20px; list-style-type: decimal; color: var(--text-muted); font-size: 0.95rem; display: flex; flex-direction: column; gap: 10px;">
+                    <li>Turn on your camera and open its system menu.</li>
+                    <li>Navigate to its USB settings and ensure the USB Connection Mode is set to <strong>MTP</strong>, <strong>PC Remote</strong>, or <strong>Mass Storage</strong> (MTP is highly recommended).</li>
+                    <li>Connect the USB cable between your camera's data port and your phone's Type-C port.</li>
+                    <li>A system dialog will pop up on Android asking for permission to allow Potopopi CamSync to access the connected device. Grant access, and the app's synchronization dashboard will load your camera's card matrix immediately.</li>
+                </ol>
+
+                <div class="highlight-box tip">
+                    <h5>💡 Connection Tip:</h5>
+                    <p>Always use the USB cable supplied by the camera manufacturer or a high-bandwidth USB 3.1 Gen 2 Type-C cable. Lower-grade charging cables can cause slow transfers or drop-outs.</p>
+                </div>
+
+                <!-- Section 3 -->
+                <h3 id="card-reader">3. SD Card Reader Setup</h3>
+                <p>If you prefer to remove your MicroSD or standard SD card from your camera and sync using a card reader, Potopopi CamSync supports this via Android's Storage Access Framework (SAF).</p>
+
+                <h4 class="sub-heading">Step-by-Step Setup:</h4>
+                <ul>
+                    <li>Insert your card into the Type-C card reader and plug the reader into your phone.</li>
+                    <li>Open Potopopi CamSync and navigate to the <strong>Destinations</strong> tab.</li>
+                    <li>Choose <strong>Local/SD Card</strong>, and click <strong>Choose Folder</strong>.</li>
+                    <li>In the system file picker, tap the navigation menu (top-left) and select your external SD card volume, then select the target backup directory and tap <strong>Allow Access to directory</strong>.</li>
+                </ul>
+
+                <!-- Section 4 -->
+                <h3 id="destinations">4. Configuring Destinations</h3>
+                <p>Configure multiple backup nodes to sync your media in parallel. Potopopi CamSync handles public and self-hosted destinations concurrently.</p>
+
+                <h4 class="sub-heading">A. Google Drive (Direct REST Engine)</h4>
+                <p>Our Google Drive connector runs directly on secure REST endpoint queries, avoiding heavy client SDK overheads:</p>
+                <ul>
+                    <li>Click <strong>Connect Google Drive</strong> and authorize via the secure Google OAuth2 flow.</li>
+                    <li>All authorization keys and refresh tokens are encrypted locally inside Android's secure <code>EncryptedSharedPreferences</code> storage.</li>
+                    <li><strong>Limited Scope Protection:</strong> The app relies strictly on the <code>drive.file</code> scope, meaning it can only read, write, and see folders and assets that were directly created by Potopopi CamSync. It has zero access to the rest of your Drive.</li>
+                </ul>
+
+                <h4 class="sub-heading">B. Immich Integration</h4>
+                <p>Back up directly to your personal Immich server:</p>
+                <ul>
+                    <li>Enter your self-hosted Immich instance domain (e.g., <code>https://immich.yourdomain.com</code>).</li>
+                    <li>Enter your personal **API Key** generated in the Immich User Settings panel.</li>
+                </ul>
+
+                <h4 class="sub-heading">C. Nextcloud (WebDAV Sync Engine)</h4>
+                <p>Connect natively to your Nextcloud instance:</p>
+                <ul>
+                    <li>Provide your Nextcloud server URL and your login credentials (using Nextcloud <strong>App Passwords</strong> is highly recommended for security).</li>
+                    <li><strong>Large File Optimization:</strong> Small files (≤ 10 MB) are synchronized via immediate high-speed single PUT requests. Large RAWs and video chunks are synced via WebDAV Chunked Upload v2 protocols to prevent network timeout issues.</li>
+                </ul>
+
+                <!-- Section 5 -->
+                <h3 id="routing">5. Dynamic File Routing Matrix & Cellular Gates</h3>
+                <p>Potopopi CamSync boasts a powerful, Room-backed **Routing Matrix** allowing you to customize exactly where different files land.</p>
+
+                <h4 class="sub-heading">A. Image vs. RAW Routing</h4>
+                <p>You can route standard JPEGs to one destination (e.g., Immich for fast gallery browsing) and heavy RAW files (`.ARW`, `.CR3`, `.NEF`, etc.) to another (e.g., Nextcloud or an external local HDD for deep archiving).</p>
+                <ul>
+                    <li>Go to **Settings > File Routing Matrix**.</li>
+                    <li>Set independent target destinations for <strong>Common Media</strong> and <strong>RAW Assets</strong>.</li>
+                    <li><strong>Metadata Packing:</strong> The engine automatically aggregates companion metadata files (`.XMP` sidecars, GoPro `.LRV`/`.THM` files) into the RAW category so they are never separated from their original assets.</li>
+                </ul>
+
+                <h4 class="sub-heading">B. Per-Provider Cellular Data Gates</h4>
+                <p>Avoid expensive carrier data bills by setting strict network gates:</p>
+                <ul>
+                    <li>You can toggle metered mobile data access independently for each provider.</li>
+                    <li><strong>Example:</strong> Let Immich sync JPEGs instantly over cellular network, while constraining Nextcloud RAW backups to run **only** when your phone connects to Wi-Fi.</li>
+                </ul>
+
+                <!-- Section 6 -->
+                <h3 id="troubleshooting">6. Background Reliability & Troubleshooting</h3>
+                <p>Android's aggressive system battery savers often restrict active background tasks. Potopopi CamSync integrates deep platform safeguards to ensure reliability.</p>
+
+                <h4 class="sub-heading">Keeping Background Processes Alive:</h4>
+                <ul>
+                    <li><strong>Foreground Service Privilege:</strong> Large transfers run in a dedicated foreground service displaying a persistent progress notification. This alerts the Android OS that active data sync is taking place, preventing it from pausing the service.</li>
+                    <li><strong>Battery Optimization Waiver:</strong> For the most stable experience during large 100GB+ sync projects, we recommend turning off battery optimization for Potopopi CamSync. Go to **Settings > Apps > Potopopi CamSync > Battery > select "Unrestricted"**.</li>
+                </ul>
+
+                <div class="highlight-box warning">
+                    <h5>🛡️ Destructive Sync Safeguard:</h5>
+                    <p>If you enable the **"Delete from Source after Sync"** option, Potopopi CamSync will only delete files from your camera's SD card after obtaining a successful, authenticated verification code response from <strong>all</strong> of your active backup destinations, guaranteeing zero risk of media loss.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/#features">Features</a>
+            <a href="/#about">About</a>
+            <a href="/manual" class="active">User Manual</a>
+            <a href="/policy">Privacy Policy</a>
+            <a href="/terms">Terms of Service</a>
+            <a href="/#donation">Donate</a>
+        </div>
+        <p>&copy; 2026 purnadika. Built for privacy and automation. Hosted at <a href="https://potopopicamsync.purnadika.cloud">potopopicamsync.purnadika.cloud</a>.</p>
+    </footer>
+
+</body>
+</html>

@@ -7,6 +7,7 @@ Potopopi CamSync ("we," "us," or "our") is dedicated to protecting the privacy o
 ### 1. Privacy-First & Local-Only Design
 Potopopi CamSync is designed from the ground up as a direct, client-side synchronization utility. **We do not host any backend servers, track analytics, or collect user data.**
 - All file synchronization workflows run purely on your local device.
+- Media is accessed via MTP, saved securely to local storage as the primary cache, and then routed to the user's chosen cloud destination.
 - All media files, authentication tokens, and server addresses are transmitted directly to your chosen endpoints.
 - We never intercept, read, store, or share your media or credentials.
 
